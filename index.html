@@ -1,619 +1,983 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="hosting-provider" content="Netlify">
-    <meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=a944def6-7d76-4b75-9f06-0f83eb7061c8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGITAL CRAFT STUDIO | Agency Portfolio</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-dark: #080914;
-            --bg-card: rgba(15, 17, 35, 0.85);
-            --border-neon: rgba(168, 85, 247, 0.4);
-            --primary-red: #8b3dff;
-            --primary-gradient: linear-gradient(135deg, #8b3dff 0%, #a855f7 100%);
-            --glow-color: rgba(168, 85, 247, 0.35);
-            --text-main: #ffffff;
-            --text-muted: #a0a5c0;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(139, 61, 255, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-        }
-        /* Glassmorphism Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 8%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(8, 9, 20, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(168, 85, 247, 0.3);
-        }
-        .logo {
-            font-family: 'Teko', sans-serif;
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            color: var(--text-main);
-            text-transform: uppercase;
-        }
-        .logo span {
-            color: var(--primary-red);
-            text-shadow: 0 0 10px var(--glow-color);
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-        .nav-links a:hover {
-            color: var(--primary-red);
-            text-shadow: 0 0 8px var(--glow-color);
-        }
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 1rem;
-            background: linear-gradient(180deg, rgba(8,9,20,0.4) 0%, rgba(8,9,20,0.9) 100%),
-                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            position: relative;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--primary-gradient);
-            box-shadow: 0 0 15px var(--primary-red);
-        }
-        .hero-content h1 {
-            font-family: 'Teko', sans-serif;
-            font-size: 5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-        .hero-content h1 span {
-            color: var(--primary-red);
-            text-shadow: 0 0 20px var(--glow-color);
-        }
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
-        }
-        .btn-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-        .btn {
-            padding: 0.9rem 2.5rem;
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-        .btn-primary {
-            background: var(--primary-gradient);
-            color: #fff;
-            box-shadow: 0 0 25px var(--glow-color);
-            border: none;
-        }
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 35px rgba(168, 85, 247, 0.6);
-        }
-        .btn-outline {
-            border: 2px solid var(--primary-red);
-            color: var(--text-main);
-            background: rgba(139, 61, 255, 0.05);
-        }
-        .btn-outline:hover {
-            background: var(--primary-red);
-            box-shadow: 0 0 20px var(--glow-color);
-        }
-        /* Banner Stats Bar */
-        .stats-banner {
-            background: var(--primary-gradient);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 2rem 5%;
-            box-shadow: 0 0 30px rgba(139, 61, 255, 0.4);
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-item h3 {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            line-height: 1;
-            color: #fff;
-        }
-        .stat-item p {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.85);
-        }
-        /* Section Styling */
-        section {
-            padding: 6rem 8%;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        .section-title h2 {
-            font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .section-title p {
-            color: var(--text-muted);
-            margin-top: -0.5rem;
-        }
-        .title-line {
-            width: 80px;
-            height: 4px;
-            background: var(--primary-red);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--primary-red);
-        }
-        /* Grid Layouts */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        /* Cards Styling */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-neon);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: 0.4s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 2px solid var(--border-neon);
-        }
-        .card-body {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1;
-        }
-        .project-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-red);
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
-        }
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-red);
-        }
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-        }
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-        .card span {
-            display: inline-block;
-            font-size: 0.85rem;
-            color: #fff;
-            background: rgba(139, 61, 255, 0.2);
-            border: 1px solid var(--primary-red);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-        .external-btn {
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--primary-red);
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        /* About Section */
-        .about-box {
-            background: var(--bg-card);
-            border: 2px solid var(--border-neon);
-            border-radius: 20px;
-            padding: 3.5rem;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-        }
-        .about-box p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-neon);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-        }
-        .whatsapp-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .wa-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            background: rgba(37, 211, 102, 0.15);
-            color: #25d366;
-            border: 1px solid rgba(37, 211, 102, 0.4);
-            padding: 0.9rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-        .wa-btn:hover {
-            background: #25d366;
-            color: #000;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-        }
-        .insta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
-        }
-        .insta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
-        }
-        .email-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: rgba(139, 61, 255, 0.15);
-            color: #fff;
-            border: 1px solid var(--primary-red);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            transition: 0.3s;
-            word-break: break-all;
-        }
-        .email-btn:hover {
-            background: var(--primary-red);
-            box-shadow: 0 0 20px var(--glow-color);
-        }
-        footer {
-            text-align: center;
-            padding: 2.5rem;
-            border-top: 1px solid var(--border-neon);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background: rgba(8, 9, 20, 0.95);
-        }
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3.5rem; }
-            .nav-links { display: none; }
-            .stats-banner { flex-direction: column; gap: 1.5rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Craft — We Don't Just Design. We Craft Experiences.</title>
+  <meta name="description"
+    content="Digital Craft is a premier creative digital studio specializing in brand design, motion graphics, web development, and high-impact presentations.">
+  <meta name="keywords"
+    content="Digital Craft, creative studio, web design, branding, motion graphics, pitch decks, Algeria design studio">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Digital Craft — We Don't Just Design. We Craft Experiences.">
+  <meta property="og:description"
+    content="Creative digital studio combining design, motion, web development and visual storytelling.">
+  <meta property="og:image" content="purple logo png.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="purple logo png.png">
+
+  <!-- Typography: Satoshi -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">DIGITAL CRAFT <span>STUDIO</span></div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="wrap">
+      <nav aria-label="Main Navigation">
+        <a href="#" class="logo" aria-label="Digital Craft Home">
+          <img src="purple logo png.png" alt="Digital Craft Logo" class="brand-logo-img">
+          <span class="logo-text">DIGITAL CRAFT</span>
+        </a>
+
         <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <li><a href="#hero" class="nav-item active">Home</a></li>
+          <li><a href="#work" class="nav-item">Work</a></li>
+          <li><a href="#services" class="nav-item">Services</a></li>
+          <li><a href="#about" class="nav-item">About</a></li>
+          <li><a href="#contact" class="nav-item">Contact</a></li>
         </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>FORGE YOUR <span>DIGITAL PRESENCE</span></h1>
-            <p>Web Development • Graphic Design • Custom Code Solutions tailored for maximum impact.</p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">OUR WORK</a>
-                <a href="#contact" class="btn btn-outline">GET IN TOUCH</a>
-            </div>
+        <div class="nav-right">
+          <a href="#contact" class="btn-nav-cta">Let's Talk</a>
+          <button class="burger" id="burger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-    </section>
-
-    <!-- Stats Banner -->
-    <div class="stats-banner">
-        <div class="stat-item">
-            <h3>50+</h3>
-            <p>Projects Delivered</p>
-        </div>
-        <div class="stat-item">
-            <h3>100%</h3>
-            <p>Client Satisfaction</p>
-        </div>
-        <div class="stat-item">
-            <h3>24/7</h3>
-            <p>Technical Support</p>
-        </div>
+      </nav>
     </div>
+  </header>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="section-title">
-            <h2>OUR EXPERTISE</h2>
-            <p>Comprehensive digital solutions engineered for modern brands</p>
-            <div class="title-line"></div>
+  <!-- MOBILE OVERLAY MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <div class="logo">
+        <img src="purple logo png.png" alt="Digital Craft Logo" class="brand-logo-img">
+        <span class="logo-text">DIGITAL CRAFT</span>
+      </div>
+      <button class="close-menu-btn" id="closeMenuBtn" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="#hero">Home</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="mobile-cta-link">Let's Talk</a>
+    </div>
+    <div class="mobile-menu-footer">
+      <p class="tagline">"We don't just design. We craft experiences."</p>
+      <div class="social-quick">
+        <span>Algeria & Global</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-glow one" aria-hidden="true"></div>
+      <div class="hero-glow two" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <h1 class="hero-headline static" id="heroHeadline">
+          <span class="line-static">Crafting</span>
+          <span class="line-static">Digital</span>
+          <span class="line-static"><span class="grad-text">Experiences.</span></span>
+        </h1>
+
+        <p class="hero-sub">
+          We combine creativity and technology<br>
+          to bring your ideas to life.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-start-project">
+            <span>Start a project</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
         </div>
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Web Development">
-                <div class="card-body">
-                    <i class="fa-solid fa-code card-icon"></i>
-                    <h3>Web Development</h3>
-                    <p>High-performance responsive websites and tailored applications.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Digital Platforms">
-                <div class="card-body">
-                    <i class="fa-solid fa-layer-group card-icon"></i>
-                    <h3>Digital Platforms</h3>
-                    <p>Custom dashboards, internal tools, and management portals.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Graphic Design">
-                <div class="card-body">
-                    <i class="fa-solid fa-palette card-icon"></i>
-                    <h3>Graphic Design</h3>
-                    <p>Visual identities, logos, and high-converting marketing materials.</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="section-title">
-            <h2>FEATURED PROJECTS</h2>
-            <p>A glimpse into what we design and build</p>
-            <div class="title-line"></div>
-        </div>
-        <div class="grid">
-            <!-- Live Project 1: Spade Gym -->
-            <a href="https://islem-adis.github.io/Spade-Gym-Project/" target="_blank" class="project-link">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Spade Gym">
-                    <div class="card-body">
-                        <div>
-                            <i class="fa-solid fa-dumbbell card-icon"></i>
-                            <h3>Spade Gym Platform</h3>
-                            <p>Modern responsive landing page for fitness centers with interactive membership UI.</p>
-                        </div>
-                        <div>
-                            <span>WEB DEV • UI/UX • LIVE DEMO</span>
-                            <div class="external-btn">
-                                VISIT SITE <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Live Project 2: Nova Fashion E-Commerce -->
-            <a href="https://nova-fashion-ecommerce-production.up.railway.app/" target="_blank" class="project-link">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Nova Fashion E-Commerce">
-                    <div class="card-body">
-                        <div>
-                            <i class="fa-solid fa-bag-shopping card-icon"></i>
-                            <h3>Nova Fashion E-Commerce</h3>
-                            <p>Full-stack modern e-commerce platform designed for online fashion shopping with seamless user experience.</p>
-                        </div>
-                        <div>
-                            <span>E-COMMERCE • FULL-STACK • LIVE DEMO</span>
-                            <div class="external-btn">
-                                VISIT SITE <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Live Project 3: Medical Learning Platform -->
-            <a href="https://medical-learning-platform.onrender.com/" target="_blank" class="project-link">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Medical Learning Platform">
-                    <div class="card-body">
-                        <div>
-                            <i class="fa-solid fa-notes-medical card-icon"></i>
-                            <h3>Medical Learning Platform</h3>
-                            <p>Interactive educational platform for medical learning and research resources.</p>
-                        </div>
-                        <div>
-                            <span>ACADEMIC • WEB APP • LIVE DEMO</span>
-                            <div class="external-btn">
-                                VISIT SITE <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Live Project 4: Design & Motion Showcase (Drive) -->
-            <a href="https://drive.google.com/drive/folders/1hA-sprWrWz-qVx_Ua8vzMCQbG7-YWkij" target="_blank" class="project-link">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Design Portfolio">
-                    <div class="card-body">
-                        <div>
-                            <i class="fa-solid fa-folder-open card-icon"></i>
-                            <h3>Design & Motion Showcase</h3>
-                            <p>Interactive showcase of our graphic designs, motion graphics, and presentation decks.</p>
-                        </div>
-                        <div>
-                            <span>GRAPHICS • MOTION • DRIVE</span>
-                            <div class="external-btn">
-                                VIEW DRIVE <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+    <!-- HOW WE ARE SECTION -->
+    <section class="proof how-we-are-section">
+      <div class="wrap how-we-are-inner">
+        <span class="eyebrow">How We Are</span>
+        <p class="how-we-are-text">
+          We are <strong>Digital Craft</strong> — a creative digital team passionate about turning ideas into meaningful
+          experiences. We bring together design, motion, web development, and visual storytelling to help brands stand
+          out in a digital world. We believe great work is not just about looking good; it’s about purpose, precision,
+          and creating something people remember.
+        </p>
+        <p class="how-we-are-tagline grad-text">
+          We don’t just create. We craft.
+        </p>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-title">
-            <h2>ABOUT DIGITAL CRAFT STUDIO</h2>
-            <div class="title-line"></div>
+    <!-- SERVICES -->
+    <section id="services" class="services-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Disciplines & Services</span>
+          <h2 class="section-title">We turn ideas into<br><span class="grad-text">digital reality.</span></h2>
+          <p class="section-desc">Four specialized disciplines under one roof — engineered to work seamlessly together
+            from first discovery to final release.</p>
         </div>
-        <div class="about-box">
-            <p>At <strong>DIGITAL CRAFT STUDIO</strong>, we bridge creativity and technology to build modern, high-impact digital experiences. From custom web development and intelligent platforms to striking visual design, we help brands scale with style and technical efficiency.</p>
+
+        <div class="services-grid reveal">
+          <!-- 01 Design -->
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">01</span>
+              <div class="service-visual">
+                <svg viewBox="0 0 46 46" fill="none">
+                  <rect x="1" y="1" width="44" height="44" rx="8" stroke="var(--border-strong)" />
+                  <circle cx="15" cy="15" r="2.5" fill="var(--blue)" />
+                  <circle cx="31" cy="15" r="2.5" fill="var(--muted)" opacity=".4" />
+                  <circle cx="15" cy="31" r="2.5" fill="var(--muted)" opacity=".4" />
+                  <circle cx="31" cy="31" r="2.5" fill="var(--purple)" />
+                  <path d="M15 15 L31 31" stroke="url(#gDesign)" stroke-width="1.5" stroke-dasharray="3 3" />
+                  <defs>
+                    <linearGradient id="gDesign" x1="0" y1="0" x2="1" y2="1">
+                      <stop stop-color="var(--blue)" />
+                      <stop offset="1" stop-color="var(--purple)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Design & Branding</h3>
+              <p class="service-desc">Complete visual identities, design systems, typographic mastery, and social
+                branding crafted to make your brand unmistakably distinctive.</p>
+              <div class="service-tags">
+                <span>Brand Identity</span>
+                <span>Visual Systems</span>
+                <span>UI/UX Design</span>
+                <span>Social Design</span>
+                <span>Iconography</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Motion -->
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">02</span>
+              <div class="service-visual viz-motion">
+                <svg viewBox="0 0 46 46" fill="none">
+                  <rect x="1" y="1" width="44" height="44" rx="8" stroke="var(--border-strong)" />
+                  <path class="motion-curve" d="M10 32 C 16 12, 24 36, 36 14" stroke="url(#gMotion)" stroke-width="2.2"
+                    stroke-linecap="round" />
+                  <circle class="motion-dot" cx="36" cy="14" r="3" fill="var(--purple)" />
+                  <defs>
+                    <linearGradient id="gMotion" x1="0" y1="0" x2="1" y2="1">
+                      <stop stop-color="var(--blue)" />
+                      <stop offset="1" stop-color="var(--purple)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Motion & Animation</h3>
+              <p class="service-desc">Motion brings static ideas to life. We produce fluid 2D/3D motion graphics, brand
+                identity stingers, and visual storytelling that captivates audiences.</p>
+              <div class="service-tags">
+                <span>Motion Graphics</span>
+                <span>Logo Animation</span>
+                <span>Explainer Videos</span>
+                <span>Promo Spots</span>
+                <span>UI Micro-interactions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Web -->
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">03</span>
+              <div class="service-visual viz-web">
+                <svg viewBox="0 0 46 46" fill="none">
+                  <rect x="1" y="1" width="44" height="44" rx="8" stroke="var(--border-strong)" />
+                  <rect x="9" y="12" width="28" height="22" rx="3" stroke="var(--muted)" stroke-width="1.2" />
+                  <line x1="9" y1="18" x2="37" y2="18" stroke="var(--muted)" stroke-width="1.2" />
+                  <circle cx="13" cy="15" r="1.2" fill="var(--blue)" />
+                  <circle cx="17" cy="15" r="1.2" fill="var(--purple)" />
+                  <circle cx="21" cy="15" r="1.2" fill="var(--silver)" opacity=".4" />
+                </svg>
+              </div>
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Web Development</h3>
+              <p class="service-desc">We build fast, responsive, and aesthetically stunning digital platforms with clean
+                modern code, seamless user interactions, and robust performance.</p>
+              <div class="service-tags">
+                <span>Custom Websites</span>
+                <span>Landing Pages</span>
+                <span>Web Applications</span>
+                <span>Performance Optimization</span>
+                <span>E-Commerce</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Presentation -->
+          <div class="service-card">
+            <div class="service-top">
+              <span class="service-num">04</span>
+              <div class="service-visual viz-pres">
+                <svg viewBox="0 0 46 46" fill="none">
+                  <rect x="1" y="1" width="44" height="44" rx="8" stroke="var(--border-strong)" />
+                  <rect class="bar1" x="12" y="24" width="4.5" height="10" rx="1" fill="var(--muted)" opacity=".6" />
+                  <rect class="bar2" x="20.5" y="18" width="4.5" height="16" rx="1" fill="var(--blue)" />
+                  <rect class="bar3" x="29" y="12" width="4.5" height="22" rx="1" fill="var(--purple)" />
+                </svg>
+              </div>
+            </div>
+            <div class="service-content">
+              <h3 class="service-title">Presentation & Decks</h3>
+              <p class="service-desc">We transform complex data, pitches, and business visions into powerful,
+                persuasive, and beautifully structured visual presentations.</p>
+              <div class="service-tags">
+                <span>Investor Pitch Decks</span>
+                <span>Corporate Keynotes</span>
+                <span>Sales Decks</span>
+                <span>Product Launches</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-title">
-            <h2>CONNECT WITH US</h2>
-            <p>Let's bring your vision to life</p>
-            <div class="title-line"></div>
+    <!-- PORTFOLIO SECTION -->
+    <section id="work" class="portfolio-section">
+      <div class="wrap">
+        <div class="portfolio-header reveal">
+          <div class="section-head" style="margin-bottom: 24px;">
+            <span class="eyebrow">Our Portfolio</span>
+            <h2 class="section-title">Selected Work &<br><span class="grad-text">Crafted Projects.</span></h2>
+            <p class="section-desc">Explore a curated selection of brand identities, web experiences, motion campaigns,
+              and pitch decks engineered for ambitious brands.</p>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="filter-bar" role="tablist" aria-label="Portfolio Categories">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+            <button class="filter-btn" data-filter="branding" role="tab" aria-selected="false">Branding</button>
+            <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web</button>
+            <button class="filter-btn" data-filter="motion" role="tab" aria-selected="false">Motion</button>
+            <button class="filter-btn" data-filter="presentation" role="tab" aria-selected="false">Presentation</button>
+          </div>
         </div>
-        <div class="contact-container">
-            <!-- Instagram Box -->
-            <div class="contact-card">
-                <i class="fa-brands fa-instagram card-icon"></i>
-                <h3>INSTAGRAM</h3>
-                <p>Follow our journey and view our latest creative showcases.</p>
-                <a href="https://www.instagram.com/digital.craft_studio?igsi=MTB6NHdxbHBldnNpcw==" target="_blank" class="insta-btn">
-                    <i class="fa-brands fa-instagram"></i> @digital.craft_studio
-                </a>
+
+        <!-- Dynamic Portfolio Grid -->
+        <div class="work-grid reveal" id="portfolioGrid">
+          <!-- Populated by script.js with structured projects -->
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN SHOWCASE SECTION -->
+    <section id="designs" class="design-showcase-section">
+      <div class="wrap">
+        <div class="section-head reveal text-center">
+          <span class="eyebrow">Visual Arts & Print</span>
+          <h2 class="section-title">Poster Collection &<br><span class="grad-text">Visual Design.</span></h2>
+          <p class="section-desc">A curated series of promotional poster designs, creative art direction, and typography
+            explorations engineered to leave a strong visual impression.</p>
+        </div>
+
+        <!-- Design Pillars Overview -->
+        <div class="design-pillars reveal">
+          <div class="pillar-item">
+            <span class="pillar-num">01</span>
+            <div class="pillar-body">
+              <strong class="pillar-title">Commercial Poster Ads</strong>
+              <p class="pillar-desc">Strategic visual storytelling and layout design crafted for digital and print
+                advertising.</p>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-num">02</span>
+            <div class="pillar-body">
+              <strong class="pillar-title">Typography & Layout</strong>
+              <p class="pillar-desc">Custom type pairing, dynamic hierarchy, and precise compositional balance.</p>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <span class="pillar-num">03</span>
+            <div class="pillar-body">
+              <strong class="pillar-title">Art Direction</strong>
+              <p class="pillar-desc">Modern dark aesthetics, refined color harmonies, and signature creative polish.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Poster Showcase Grid -->
+        <div class="poster-gallery-grid reveal">
+          <div class="poster-card">
+            <div class="poster-img-wrap">
+              <img src="FIRST POSTER.png" alt="Digital Craft Poster Design 01" loading="lazy">
+            </div>
+            <div class="poster-meta">
+              <span class="poster-tag">Poster 01</span>
+              <span class="poster-label">Visual Identity</span>
+            </div>
+          </div>
+
+          <div class="poster-card">
+            <div class="poster-img-wrap">
+              <img src="SECOND POSTER enhanced.png" alt="Digital Craft Poster Design 02" loading="lazy">
+            </div>
+            <div class="poster-meta">
+              <span class="poster-tag">Poster 02</span>
+              <span class="poster-label">Brand Campaign</span>
+            </div>
+          </div>
+
+          <div class="poster-card">
+            <div class="poster-img-wrap">
+              <img src="third poster.png" alt="Digital Craft Poster Design 03" loading="lazy">
+            </div>
+            <div class="poster-meta">
+              <span class="poster-tag">Poster 03</span>
+              <span class="poster-label">Art Direction</span>
+            </div>
+          </div>
+
+          <div class="poster-card">
+            <div class="poster-img-wrap">
+              <img src="4TH POSTER.png" alt="Digital Craft Poster Design 04" loading="lazy">
+            </div>
+            <div class="poster-meta">
+              <span class="poster-tag">Poster 04</span>
+              <span class="poster-label">Typography Art</span>
+            </div>
+          </div>
+
+          <div class="poster-card">
+            <div class="poster-img-wrap">
+              <img src="5th poster.png" alt="Digital Craft Poster Design 05" loading="lazy">
+            </div>
+            <div class="poster-meta">
+              <span class="poster-tag">Poster 05</span>
+              <span class="poster-label">Concept Series</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Behance CTA Block -->
+        <div class="design-cta-box reveal">
+          <div class="design-cta-info">
+            <span class="eyebrow">Full Collection</span>
+            <h3>Explore the complete case study on Behance</h3>
+            <p>High-resolution artwork, creative process, and complete poster details.</p>
+          </div>
+          <a href="https://www.behance.net/gallery/255385351/DIGITAL-CRAFT-STUDIO-POSTERS-AD" target="_blank"
+            rel="noopener noreferrer" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 7h7a3 3 0 0 1 0 6H2z" />
+              <path d="M2 13h9a3 3 0 0 1 0 6H2z" />
+              <path d="M15 7h7M15 12h7M15 17h7" />
+            </svg>
+            <span>View Full Project on Behance</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="process" class="process-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">How We Work</span>
+          <h2 class="section-title">Our 5-Step<br><span class="grad-text">Creative Process.</span></h2>
+          <p class="section-desc">A structured and disciplined methodology ensuring every detail is thought-through,
+            from strategy to final deployment.</p>
+        </div>
+
+        <div class="process-list reveal">
+          <div class="process-item">
+            <div class="process-num-col">
+              <span class="p-num">01</span>
+              <div class="p-line"></div>
+            </div>
+            <div class="process-body">
+              <h3 class="p-title">Discover</h3>
+              <p class="p-desc">We deep-dive into your vision, target audience, business goals, and competitive
+                landscape to establish solid foundational insight.</p>
+            </div>
+            <div class="process-deliverable">
+              <span>Deliverable: Strategic Brief & Scope</span>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="process-num-col">
+              <span class="p-num">02</span>
+              <div class="p-line"></div>
+            </div>
+            <div class="process-body">
+              <h3 class="p-title">Define</h3>
+              <p class="p-desc">We establish creative moodboards, architectural blueprints, art direction, and
+                typography hierarchies before touching pixel production.</p>
+            </div>
+            <div class="process-deliverable">
+              <span>Deliverable: Creative Direction & UX Wireframes</span>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="process-num-col">
+              <span class="p-num">03</span>
+              <div class="p-line"></div>
+            </div>
+            <div class="process-body">
+              <h3 class="p-title">Design</h3>
+              <p class="p-desc">We craft the complete visual identity, UI components, interaction design, motion
+                storyboards, and cohesive design tokens.</p>
+            </div>
+            <div class="process-deliverable">
+              <span>Deliverable: High-Fidelity UI & Brand Assets</span>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="process-num-col">
+              <span class="p-num">04</span>
+              <div class="p-line"></div>
+            </div>
+            <div class="process-body">
+              <h3 class="p-title">Build</h3>
+              <p class="p-desc">We develop, engineer, animate, and test responsive code and motion sequences with
+                pixel-perfect fidelity and smooth performance.</p>
+            </div>
+            <div class="process-deliverable">
+              <span>Deliverable: Production Code & Rendered Assets</span>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="process-num-col">
+              <span class="p-num">05</span>
+            </div>
+            <div class="process-body">
+              <h3 class="p-title">Deliver</h3>
+              <p class="p-desc">We complete rigorous QA testing, launch the digital experience, handover documentation,
+                and ensure long-term success.</p>
+            </div>
+            <div class="process-deliverable">
+              <span>Deliverable: Live Launch & Source Packages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+      <div class="wrap">
+        <div class="about-grid">
+          <div class="reveal">
+            <span class="eyebrow">About Digital Craft</span>
+            <h2 class="section-title">We are a studio built<br>around <span class="grad-text">taste & purpose.</span>
+            </h2>
+
+            <div class="about-text">
+              <p>Digital Craft is a creative digital team built around one core belief: great digital work is not only
+                about aesthetic polish — it's about how it feels, communicates, and delivers measurable value.</p>
+              <p>We combine multidisciplinary thinking — branding, motion design, web development, and visual
+                storytelling — to craft experiences that leave a lasting mark.</p>
             </div>
 
-            <!-- Email Box -->
-            <div class="contact-card">
-                <i class="fa-solid fa-envelope card-icon"></i>
-                <h3>EMAIL US</h3>
-                <p>Send us a direct email for inquiries, pricing, and project proposals.</p>
-                <a href="mailto:digitalcraftstudio3@gmail.com" class="email-btn">
-                    <i class="fa-solid fa-paper-plane"></i> digitalcraftstudio3@gmail.com
-                </a>
-            </div>
-
-            <!-- WhatsApp Box -->
-            <div class="contact-card">
-                <i class="fa-brands fa-whatsapp card-icon"></i>
-                <h3>DIRECT WHATSAPP</h3>
-                <p>Reach out directly for quotes, inquiries, or consultations.</p>
-                <div class="whatsapp-buttons">
-                    <a href="https://wa.me/213784425864" target="_blank" class="wa-btn">
-                        <i class="fa-brands fa-whatsapp"></i> +213 784 425 864
-                    </a>
-                    <a href="https://wa.me/213556882629" target="_blank" class="wa-btn">
-                        <i class="fa-brands fa-whatsapp"></i> +213 556 882 629
-                    </a>
-                    <a href="https://wa.me/213562014465" target="_blank" class="wa-btn">
-                        <i class="fa-brands fa-whatsapp"></i> +213 562 014 465
-                    </a>
+            <div class="mv-grid">
+              <div class="mv-card">
+                <div class="mv-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                    <path d="M2 12h20" />
+                  </svg>
                 </div>
+                <span class="eyebrow">Our Mission</span>
+                <p>To help visionary brands communicate with clarity and distinction through thoughtful design and
+                  modern technology.</p>
+              </div>
+              <div class="mv-card">
+                <div class="mv-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+                <span class="eyebrow">Our Vision</span>
+                <p>To establish a world-class creative studio from Algeria delivering work capable of competing on the
+                  global stage.</p>
+              </div>
             </div>
+          </div>
+
+          <div class="reveal">
+            <div class="philosophy-box">
+              <span class="eyebrow">Our Philosophy</span>
+              <div class="flow">
+                <div class="flow-step">
+                  <span class="flow-dot"></span>
+                  <div class="flow-info">
+                    <span class="flow-title">01 Ideas</span>
+                    <span class="flow-desc">Uncovering the unique essence and strategic goal.</span>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <span class="flow-dot"></span>
+                  <div class="flow-info">
+                    <span class="flow-title">02 Craft</span>
+                    <span class="flow-desc">Obsessing over typography, rhythm, and precision.</span>
+                  </div>
+                </div>
+                <div class="flow-step">
+                  <span class="flow-dot"></span>
+                  <div class="flow-info">
+                    <span class="flow-title">03 Experience</span>
+                    <span class="flow-desc">Delivering an emotional connection that converts.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 DIGITAL CRAFT STUDIO. All Rights Reserved.</p>
-    </footer>
+    <!-- WHY DIGITAL CRAFT -->
+    <section class="why-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Why Digital Craft</span>
+          <h2 class="section-title">Why brands partner with us.</h2>
+          <p class="section-desc">We believe in delivering measurable craft, not generic templates.</p>
+        </div>
+
+        <div class="why-grid reveal">
+          <div class="why-card">
+            <span class="why-num">01</span>
+            <h3 class="why-title">Design + Engineering</h3>
+            <p class="why-desc">We bridge high-end aesthetics with technical precision so design and performance never
+              compromise.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-num">02</span>
+            <h3 class="why-title">Detail Obsessed</h3>
+            <p class="why-desc">From micro-interactions to typography kerning, every tiny pixel is intentional and
+              refined.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-num">03</span>
+            <h3 class="why-title">One Unified Team</h3>
+            <p class="why-desc">Designers, animators, and developers collaborating under one roof with zero friction or
+              silos.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-num">04</span>
+            <h3 class="why-title">Built For Modern Digital</h3>
+            <p class="why-desc">Tailored for contemporary digital screens, social feeds, high-DPI displays, and fast
+              mobile loads.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-num">05</span>
+            <h3 class="why-title">Active Listening</h3>
+            <p class="why-desc">We don't simply take orders. We diagnose your real challenges and co-create optimal
+              solutions.</p>
+          </div>
+          <div class="why-card">
+            <span class="why-num">06</span>
+            <h3 class="why-title">Long-term Partnership</h3>
+            <p class="why-desc">We support you beyond the initial launch to maintain brand equity and continuous digital
+              growth.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL / INSTAGRAM COMMUNITY -->
+    <section class="community-section" id="community">
+      <div class="wrap">
+        <div class="section-head reveal text-center">
+          <span class="eyebrow">INSTAGRAM FEED & PUBLICATIONS</span>
+          <h2 class="section-title">Follow our <span class="grad-text">Latest Pubs.</span></h2>
+          <p class="section-desc">Join 66K+ creative minds on Instagram to discover our latest branding<br>posts, design
+            studies, motion reels, and studio updates.</p>
+        </div>
+
+        <!-- Instagram Profile Banner Card -->
+        <div class="ig-profile-bar reveal">
+          <div class="ig-profile-left">
+            <div class="ig-avatar-ring">
+              <img src="purple logo png.png" alt="Digital Craft Studio Avatar" class="ig-avatar-img">
+            </div>
+            <div class="ig-profile-meta">
+              <div class="ig-name-row">
+                <span class="ig-handle">@digital.craft_studio</span>
+                <span class="ig-badge" title="Official Studio Account">✓</span>
+              </div>
+              <span class="ig-bio-tag">Digital Creative Studio • 66K+ Community</span>
+            </div>
+          </div>
+          <div class="ig-profile-right">
+            <a href="https://www.instagram.com/digital.craft_studio/" target="_blank" rel="noopener noreferrer"
+              class="btn btn-primary btn-ig-follow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Follow on Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+      <div class="wrap">
+        <div class="contact-top reveal">
+          <span class="eyebrow">Start A Conversation</span>
+          <h2 class="section-title">Let's craft<br><span class="grad-text">something great.</span></h2>
+          <p class="section-desc">Have an upcoming project, redesign, brand launch, or motion campaign? We would love to
+            collaborate.</p>
+
+          <div class="contact-methods">
+            <a href="mailto:digitalcraftstudio3@gmail.com" class="contact-pill">
+              <span class="cp-label">Email Us</span>
+              <span class="cp-val">digitalcraftstudio3@gmail.com</span>
+            </a>
+            <a href="https://www.instagram.com/digital.craft_studio/" target="_blank" rel="noopener noreferrer"
+              class="contact-pill">
+              <span class="cp-label">Instagram</span>
+              <span class="cp-val">@digital.craft_studio</span>
+            </a>
+            <a href="https://wa.me/213556882629" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <span class="cp-label">WhatsApp</span>
+              <span class="cp-val">+213 556 88 26 29</span>
+            </a>
+            <a href="https://wa.me/213784425864" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <span class="cp-label">WhatsApp</span>
+              <span class="cp-val">+213 784 42 58 64</span>
+            </a>
+            <a href="https://wa.me/213562014465" target="_blank" rel="noopener noreferrer" class="contact-pill">
+              <span class="cp-label">WhatsApp</span>
+              <span class="cp-val">+213 562 01 44 65</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Request Form -->
+        <form class="form-wrap reveal" id="project-form" novalidate>
+          <div class="form-header">
+            <div class="form-header-badge">Creative Project Brief</div>
+            <h3>Project Inquiry Form</h3>
+            <p>Tell us what you're building. We'll review your project details and respond promptly.</p>
+          </div>
+
+          <!-- Section 1: Personal Information -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="section-step">01</span>
+              <h4>Personal Information</h4>
+            </div>
+
+            <div class="form-grid">
+              <div class="field" id="field-name">
+                <label for="f-name">Full Name <span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" placeholder="e.g. Benbouzid Mouad" autocomplete="name"
+                  required>
+                <div class="field-error" id="err-name" aria-live="polite"></div>
+              </div>
+
+              <div class="field" id="field-email">
+                <label for="f-email">Email <span class="req">*</span></label>
+                <input id="f-email" name="email" type="email" placeholder="Mouad@example.com" autocomplete="email"
+                  required>
+                <div class="field-error" id="err-email" aria-live="polite"></div>
+              </div>
+
+              <div class="field" id="field-phone">
+                <label for="f-phone">WhatsApp / Phone Number <span class="req">*</span></label>
+                <div class="phone-input-group">
+                  <span class="phone-country-tag" title="Algeria (+213) or International">🇩🇿 +213</span>
+                  <input id="f-phone" name="phone" type="tel" placeholder="0556 88 26 29 or +213..." autocomplete="tel"
+                    required>
+                </div>
+                <span class="field-hint">Supports Algerian formats (05XX, 06XX, 07XX, +213) &amp; international</span>
+                <div class="field-error" id="err-phone" aria-live="polite"></div>
+              </div>
+
+              <div class="field" id="field-company">
+                <label for="f-company">Company / Brand Name <span class="opt-tag">(Optional)</span></label>
+                <input id="f-company" name="company" type="text" placeholder="e.g. Acme Studio / Personal Brand"
+                  autocomplete="organization">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Project Information -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="section-step">02</span>
+              <h4>Project Information</h4>
+            </div>
+
+            <!-- Service Selection Chips -->
+            <div class="field full" id="field-services">
+              <label>What service do you need? <span class="req">*</span></label>
+              <div class="service-chips-grid" id="serviceChipsGrid" role="group" aria-label="Services selection">
+                <button type="button" class="service-chip" data-service="Graphic Design">
+                  <span class="chip-icon">🎨</span>
+                  <span class="chip-label">Graphic Design</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="service-chip" data-service="Brand Identity">
+                  <span class="chip-icon">✨</span>
+                  <span class="chip-label">Brand Identity</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="service-chip" data-service="Motion Design">
+                  <span class="chip-icon">⚡</span>
+                  <span class="chip-label">Motion Design</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="service-chip" data-service="Web Development">
+                  <span class="chip-icon">💻</span>
+                  <span class="chip-label">Web Development</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="service-chip" data-service="Presentation Design">
+                  <span class="chip-icon">📊</span>
+                  <span class="chip-label">Presentation Design</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="service-chip" data-service="Social Media Design">
+                  <span class="chip-icon">📱</span>
+                  <span class="chip-label">Social Media Design</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+                <button type="button" class="service-chip" data-service="Other">
+                  <span class="chip-icon">💡</span>
+                  <span class="chip-label">Other</span>
+                  <span class="chip-check" aria-hidden="true">✓</span>
+                </button>
+              </div>
+              <div class="field-error" id="err-services" aria-live="polite"></div>
+            </div>
+
+            <!-- Project Description -->
+            <div class="field full" id="field-desc">
+              <label for="f-desc">Project Description <span class="req">*</span></label>
+              <textarea id="f-desc" name="description" rows="5"
+                placeholder="Tell us about your project, your goals, and what you need." required></textarea>
+              <div class="field-error" id="err-desc" aria-live="polite"></div>
+            </div>
+
+            <div class="form-grid">
+              <!-- Budget Range (Algerian DA) -->
+              <div class="field" id="field-budget">
+                <label for="f-budget">Budget Range</label>
+                <select id="f-budget" name="budget">
+                  <option value="">Select budget range</option>
+                  <option value="Under 20,000 DA">Under 20,000 DA</option>
+                  <option value="20,000 – 50,000 DA">20,000 – 50,000 DA</option>
+                  <option value="50,000 – 100,000 DA">50,000 – 100,000 DA</option>
+                  <option value="100,000+ DA">100,000+ DA</option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+
+              <!-- Desired Timeline -->
+              <div class="field" id="field-timeline">
+                <label for="f-timeline">Desired Timeline</label>
+                <select id="f-timeline" name="timeline">
+                  <option value="">Select timeline</option>
+                  <option value="ASAP">ASAP</option>
+                  <option value="1–2 weeks">1–2 weeks</option>
+                  <option value="1 month">1 month</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+
+              <!-- How did you find us? -->
+              <div class="field full" id="field-source">
+                <label for="f-source">How did you find us?</label>
+                <select id="f-source" name="source">
+                  <option value="">Select an option</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Behance">Behance</option>
+                  <option value="Google">Google</option>
+                  <option value="Referral">Referral</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Final CTA Banner & Dual Submission Options -->
+          <div class="form-submission-block">
+            <div class="ready-banner">
+              <span class="ready-badge">READY TO START?</span>
+              <h4 class="ready-title">Tell us what you're building. We'll take it from there.</h4>
+              <p class="ready-subtitle">No account. No complicated process. Just tell us about your project.</p>
+            </div>
+
+            <div class="submission-picker-header">
+              <span class="picker-lead">Choose how you'd like to send your project details.</span>
+            </div>
+
+            <div class="submission-actions-grid">
+              <!-- WhatsApp Primary CTA -->
+              <div class="submit-option primary-option">
+                <button type="button" class="btn-submit-action btn-submit-whatsapp" id="btnSubmitWhatsapp">
+                  <span class="btn-action-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                      </path>
+                    </svg>
+                  </span>
+                  <span class="btn-action-text">Send via WhatsApp &rarr;</span>
+                </button>
+                <div class="submit-caption">
+                  <span class="caption-dot"></span>
+                  <span class="caption-text"><strong>Fastest way to reach us.</strong></span>
+                </div>
+              </div>
+
+              <!-- Email Secondary CTA -->
+              <div class="submit-option secondary-option">
+                <button type="button" class="btn-submit-action btn-submit-email" id="btnSubmitEmail">
+                  <span class="btn-action-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </span>
+                  <span class="btn-action-text">Send via Email &rarr;</span>
+                </button>
+                <div class="submit-caption">
+                  <span class="caption-dot email-dot"></span>
+                  <span class="caption-text"><strong>Best for detailed project briefs.</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Submission Feedback (No fake backend) -->
+          <div class="form-feedback-banner" id="formFeedback" role="status" aria-live="polite" style="display: none;">
+            <div class="feedback-card">
+              <div class="feedback-icon" id="feedbackIcon">⚡</div>
+              <div class="feedback-body">
+                <div class="feedback-status-title" id="feedbackTitle">Your inquiry is ready to send.</div>
+                <div class="feedback-status-msg" id="feedbackMsg">Opening application...</div>
+                <div class="feedback-fallback" id="feedbackFallback" style="display: none;">
+                  Didn't open automatically? <a href="#" id="feedbackManualLink" target="_blank"
+                    rel="noopener noreferrer">Click here to open manually</a>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- CASE STUDY MODAL -->
+  <div class="modal-overlay" id="caseStudyModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close Case Study">&times;</button>
+
+      <div class="modal-body" id="modalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="purple logo png.png" alt="Digital Craft Logo" class="brand-logo-img">
+            <span class="logo-text">DIGITAL CRAFT</span>
+          </a>
+          <p class="footer-tag">"We don't just design. We craft experiences."</p>
+          <div class="footer-badge">Algeria • Worldwide Digital Studio</div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#hero">Home</a>
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#process">Process</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Design & Branding</a>
+          <a href="#services">Motion & Animation</a>
+          <a href="#services">Web Development</a>
+          <a href="#services">Pitch Decks & Presentations</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/digital.craft_studio/" target="_blank" rel="noopener noreferrer">Instagram
+            (@digital.craft_studio)</a>
+          <a href="https://www.behance.net/gallery/255385351/DIGITAL-CRAFT-STUDIO-POSTERS-AD" target="_blank"
+            rel="noopener noreferrer">Behance — Poster Collection</a>
+          <a href="https://drive.google.com/drive/folders/1tYgVevU0zd8qaso7Xi8bUDyoh2Yeb0f4?usp=sharing" target="_blank"
+            rel="noopener noreferrer">Google Drive — Presentations</a>
+          <a href="https://github.com/mohamedramdani2/NexaShop" target="_blank" rel="noopener noreferrer">GitHub —
+            NexaShop E-Commerce</a>
+          <a href="https://wa.me/213556882629" target="_blank" rel="noopener noreferrer">WhatsApp: +213 556 88 26 29</a>
+          <a href="https://wa.me/213784425864" target="_blank" rel="noopener noreferrer">WhatsApp: +213 784 42 58 64</a>
+          <a href="https://wa.me/213562014465" target="_blank" rel="noopener noreferrer">WhatsApp: +213 562 01 44 65</a>
+          <a href="mailto:digitalcraftstudio3@gmail.com">Email Us</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Digital Craft. All rights reserved.</span>
+        <span>Crafted with precision & passion.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
+
 </html>
