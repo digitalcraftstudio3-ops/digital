@@ -231,6 +231,13 @@ button {
   line-height: 1.7;
   font-weight: 400;
 }
+}
+.section-head.text-center .section-desc,
+.text-center .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 
 /* Scroll Reveal Animations */
 .reveal {
